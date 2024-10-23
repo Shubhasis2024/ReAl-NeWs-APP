@@ -2,23 +2,35 @@ import React, { Component } from 'react'
 import Newsitems from './Newsitems'
 
 export class News extends Component {
+
+
+  constructor(){
+super();
+    this.state={
+    articles:[],
+    loading:false
+    }
+  }
+   async componentDidMount(){
+    let url="https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=8287e60ed5e342779fa9816f0ed113a6 ";
+    let data=  await fetch(url);
+    let newdata=await data.json();
+    this.setState({articles:newdata.articles})
+  }
   render() {
     return (
       <div className="container" my-4>
       <h2>Top Headlines of NewsHub</h2>
+      
       <div className="row">
-      <div className="col-md-4">
-      <Newsitems title="Mytitle" description="Mydescription" imgurl="https://i.blogs.es/4fcb29/1mina-de-bitcoin-portada/840_560.jpeg"/>
-      </div>
-      <div className="col-md-4">
-      <Newsitems title="Mytitle" description="Mydescription"imgurl="https://i.kinja-img.com/image/upload/c_fill,h_675,pg_1,q_80,w_1200/d91147f331314988daca7da52f3f5982.jpg"/>
-      </div>
-      <div className="col-md-4">
-      <Newsitems title="Mytitle" description="Mydescription"imgurl="https://i.insider.com/67058c9f3f2165d716df5b64?width=1200&format=jpeg"/>
+      {this.state.articles.map((ele)=>
+      {
+       return <div className="col-md-4">
+      <Newsitems key={ele.url} title={ele.title} description={ele.content} imgurl={ele.urlToImage} newsurl={ele.url}/>
       </div>
 
+      })}
       </div>
-      
       </div>
     )
   }
