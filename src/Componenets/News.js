@@ -53,7 +53,8 @@ super();
         {this.state.articles.map((ele)=>
         {
         return <div className="col-md-4">
-        <Newsitems key={ele.url} title={ele.title} description={ele.content} imgurl={ele.urlToImage} newsurl={ele.url}/>
+        <Newsitems key={ele.url} title={ele.title} description={ele.content} imgurl={ele.urlToImage} newsurl={ele.url} author={ele.author}
+        date={ele.publishedAt}/>
         </div>
 
         })}
