@@ -6,7 +6,7 @@ export class Newsitems extends Component {
     return (
       <div className="my-3">
             <div className="card" >
-  <img src={!imgurl?"https://images.barrons.com/im-31549185?width=940&size=1.4695752009184846&pixel_ratio=1.5":imgurl} className="card-img-top" alt="..."/>
+  <img src={!imgurl?"https://assets.newatlas.com/dims4/default/da31188/2147483647/strip/true/crop/1328x885+93+0/resize/1200x800!/quality/90/?url=http%3A%2F%2Fnewatlas-brightspot.s3.amazonaws.com%2F80%2Fef%2F5635fe1f4f51bd1872209f8d6b26%2Fscreenshot-2024-05-15-at-6.32.51%E2%80%AFPM.png":imgurl} className="card-img-top" alt="..."/>
   <div className="card-body">
     <h5 className="card-title">{title}</h5>
     <p className="card-text">{description}</p>
