@@ -4,8 +4,8 @@ import Newsitems from './Newsitems'
 export class News extends Component {
 
 
-  constructor(){
-super();
+  constructor(props){
+super(props);
     this.state={
     articles:[],
     loading:false,
@@ -13,7 +13,7 @@ super();
     }
   }
    async componentDidMount(){
-    let url="https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=8287e60ed5e342779fa9816f0ed113a6&page=1 ";
+    let url=`https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=${this.props.apikey}&page=1 `;
     let data=  await fetch(url);
     let newdata=await data.json();
     this.setState({articles:newdata.articles})
@@ -21,7 +21,7 @@ super();
 
   previouspage= async()=>{
     console.log("PREVIOUS")
-    let url=`https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=8287e60ed5e342779fa9816f0ed113a6&page=${this.state.page-1}`;
+    let url=`https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=${this.props.apikey}&page=${this.state.page-1}`;
           let data=  await fetch(url);
           let newdata=await data.json();
         
@@ -34,7 +34,7 @@ super();
   }
  nextpage= async()=>{
       console.log("next")
-      let url=`https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=8287e60ed5e342779fa9816f0ed113a6&page=${this.state.page+1}`;
+      let url=`https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=${this.props.apikey}&page=${this.state.page+1}`;
           let data=  await fetch(url);
           let newdata=await data.json();
         
