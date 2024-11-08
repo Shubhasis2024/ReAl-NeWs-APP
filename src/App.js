@@ -1,19 +1,20 @@
 import './App.css';
 
 
-import React, { Component } from 'react'
+import React from 'react'
 import Navbar from './Componenets/Navbar';
 import News from'./Componenets/News';
 
-export default class App extends Component {
-  apikey=process.env.REACT_APP_NEWS_API
-  render() {
+const App=()=> {
+  const apikey=process.env.REACT_APP_NEWS_API
+  
    
     return (
       <div>
        <Navbar></Navbar>
-       <News apikey={this.apikey}></News>
+       <News apikey={apikey}></News>
       </div>
     )
-  }
-}
+
+};
+export default App;
